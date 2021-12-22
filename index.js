@@ -29,7 +29,8 @@ registerPatcher({
             patch: function (record, helpers, settings, locals) {
                 helpers.logMessage(`Processing spell ${xelib.LongName(record)}`);
                 const effects = xelib.GetElements(record, "Effects", false);
-                for (let i in effects) {
+                const effectsLength = effects.length
+                for (let i = 0; i < effectsLength; i++) {
                     const form_id = xelib.GetUIntValue(effects[i], "EFID - Base Effect");
                     if (form_id === 0) {
                         continue;
